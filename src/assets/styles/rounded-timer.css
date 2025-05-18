@@ -1,0 +1,28 @@
+.timer-container {
+  position: relative;
+
+  width: 12rem;
+  height: 12rem;
+  margin: 1rem auto;
+
+  .timer-countdown {
+    color: var(--text-color);
+    text-anchor: middle;
+    font-family: var(--font);
+    font-size: 1.25rem;
+  }
+
+  .timer-bg {
+    stroke: var(--card-color);
+  }
+
+  .timer-progress {
+    stroke: var(--accent-color);
+    transition: stroke-dashoffset 1s linear;
+  }
+
+  .timer-desc {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+}

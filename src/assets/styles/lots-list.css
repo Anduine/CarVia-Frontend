@@ -1,0 +1,231 @@
+.lots-list {
+  --elem-width: 60rem;
+
+  h1 {
+    width: 20rem;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .pagination {
+    max-width: 30rem;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  button {
+    background-color: var(--card-color);
+
+    margin: 0.5rem;
+
+    padding: 10px;
+
+    border: none;
+    border-radius: 0.3rem;
+
+    color: var(--text-color);
+    font-family: var(--font);
+  }
+
+  .active {
+    background-color: var(--secondary-text-color);
+  }
+}
+
+.lot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+
+  max-width: var(--elem-width);
+
+  margin-bottom: 1rem;
+  padding: 1rem;
+
+  border-radius: 0.6rem;
+  background-color: var(--card-color);
+}
+
+.lot__gallery,
+.lot__gallery__placeholder {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-grow: 1; /* Элемент растёт, заполняя доступное пространство */
+  flex-shrink: 1; /* Элемент сжимается, если не хватает места */
+  flex-basis: 30rem; /* Базовая (начальная) ширина до распределения свободного места */
+
+  max-width: 30rem;
+  height: 30rem;
+
+  border-radius: 0.5rem;
+  background-color: var(--card-color);
+}
+
+.lot__gallery__placeholder {
+  flex-direction: column;
+
+  text-align: center;
+  color: #aaaaaa;
+  font-size: 1.2rem;
+
+  svg {
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.gallery__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+}
+
+.gallery__controls {
+  display: flex;
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+
+  width: 100%;
+  transform: translateY(-50%);
+
+  justify-content: space-between;
+  pointer-events: none;
+
+  button {
+    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 0.6rem;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    button {
+      font-size: 1rem;
+      padding: 0.4rem;
+    }
+  }
+
+  button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  button:focus {
+    outline: none;
+  }
+}
+
+.gallery__thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+
+  width: 10rem;
+  margin-top: 1rem;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  img:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+
+  /* img:active {
+    border: 1px solid var(--secondary-text-color);
+  } */
+}
+
+.lot__info {
+  flex: 1;
+
+  h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .price {
+    margin-bottom: 1.5rem;
+  }
+
+  .dollar-price {
+    display: inline;
+
+    margin-right: 1rem;
+
+    font-size: 1.5rem;
+    color: #b8e40e;
+  }
+
+  .uah-price {
+    display: inline;
+
+    font-size: 1.2rem;
+  }
+
+  .lot__info__grid {
+    display: grid;
+    grid-template-columns: minmax(10rem, 1fr) minmax(12rem, 2fr);
+    gap: 1rem;
+    row-gap: 1rem;
+    /* grid-template-columns: 10rem 12rem;
+    grid-template-rows: repeat(9, 2rem) 6rem 2rem; */
+  }
+
+  .description {
+    grid-column: span 2;
+
+    word-wrap: break-word;
+  }
+
+  .postdate {
+    grid-column: 1;
+
+    text-align: left;
+    color: var(--secondary-text-color);
+  }
+
+  .contact {
+    grid-column: 2;
+
+    width: 160px;
+    height: 70px;
+
+    margin-left: auto;
+    margin-right: 20px;
+  }
+}
