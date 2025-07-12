@@ -1,0 +1,142 @@
+.add-lot-page,
+.edit-lot-page {
+  max-width: 50%;
+
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 2rem;
+  border-radius: 12px;
+
+  background-color: var(--card-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  h1 {
+    margin-bottom: 2rem;
+
+    color: var(--accent-color);
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .lot-form-grid {
+    display: grid;
+    column-gap: 8%;
+    grid-template-columns: 46% 46%;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      margin-bottom: 0.3rem;
+
+      padding: 0.5rem;
+
+      border-radius: 6px;
+      border: 1px solid var(--not-important-color);
+
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .desc-group {
+      grid-column: span 2;
+    }
+
+    .img-group {
+      grid-column: span 2;
+    }
+  }
+
+  .submit-button,
+  .delete-button {
+    display: block;
+    margin: 1rem auto;
+
+    width: 10rem;
+    height: 3rem;
+    padding: 0.6rem 1.2rem;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--active-color);
+    }
+  }
+
+  .delete-button {
+    width: auto;
+
+    svg {
+      margin-right: 0.2rem;
+    }
+  }
+
+  .image-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .image-item {
+    position: relative;
+    border: 1px solid var(--not-important-color);
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--text-color);
+  }
+
+  .image-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .image-item button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--text-color);
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+}

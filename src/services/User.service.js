@@ -1,44 +1,38 @@
 import api from "./api";
 
-async function getUser(token) {
-  return api
-    .get(`/sso/user_profile`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((response) => {
-      return response;
-    })
-    .catch((error) => {
-      //console.error("Помилка отримання профілю користувача: ", error.message);
-      throw error;
-    });
+async function getUserProfile() {
+  return api.get(`/sso/user_profile`);
+}
+
+async function updateUserProfile(userData) {
+  const formData = new FormData();
+  for (const key in userData) {
+    formData.append(key, userData[key]);
+  }
+
+  return api.put("/sso/update_user_profile", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
 }
 
 async function loginUser(login, email, password) {
-  return api
-    .post("/sso/login", { login, email, password })
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      //console.error("Помилка авторизації: ", error.message);
-      throw error;
-    });
+  return api.post(
+    "/sso/login",
+    { login, email, password },
+    {
+      headers: {
+        Authorization: undefined,
+      },
+    }
+  );
 }
 
 async function registerUser(formData) {
-  console.log(formData);
-  return api
-    .post("/sso/register", formData)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      //console.error("Помилка реєстрації: ", error.message);
-      throw error;
-    });
+  return api.post("/sso/register", formData, {
+    headers: {
+      Authorization: undefined,
+    },
+  });
 }
 
-export { getUser, loginUser, registerUser };
+export { getUserProfile, updateUserProfile, loginUser, registerUser };

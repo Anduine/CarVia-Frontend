@@ -5,89 +5,64 @@ const SearchContext = createContext();
 export const useSearch = () => useContext(SearchContext);
 
 export function SearchProvider({ children }) {
-  const [isFilterActive, setFilterActive] = useState(false);
+  // const [isFilterActive, setFilterActive] = useState(false);
 
-  const [brand, setBrand] = useState("");
-  const [model, setModel] = useState("");
-  const [modelsList, setListModels] = useState([]);
-  const [minYear, setMinYear] = useState("");
-  const [maxYear, setMaxYear] = useState("");
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  const [draftFilters, setDraftFilters] = useState({
+    brand: "",
+    model: "",
+    minPrice: 0,
+    maxPrice: 0,
+    minYear: "",
+    maxYear: "",
+  });
 
-  const [sellLots, setLots] = useState([]);
-  const [lotsCount, setCount] = useState(0);
-  const [curPage, setCurrentPage] = useState(1);
+  // Активные фильтры (то, что применяется)
+  const [filters, setFilters] = useState(null); // null = фильтр не активен
 
-  const setFilterSearch = useCallback((isActive) => {
-    setFilterActive(isActive);
-  }, []);
+  // Список моделей по выбранному бренду
+  const [modelsList, setModelsList] = useState([]);
 
-  const handleBrandSearch = useCallback((brand) => {
-    setBrand(brand);
-  }, []);
+  // Лоты и пагинация
+  const [sellLots, setSellLots] = useState([]);
+  const [lotsCount, setLotsCount] = useState(0);
+  const [curPage, setCurPage] = useState(1);
 
-  const handleModelSearch = useCallback((model) => {
-    setModel(model);
-  }, []);
+  // Применение фильтров
+  const applyFilters = useCallback(() => {
+    setFilters({ ...draftFilters });
+    setCurPage(1);
+  }, [draftFilters]);
 
-  const handleMinYearSearch = useCallback((minYear) => {
-    setMinYear(minYear);
-  }, []);
-
-  const handleMaxYearSearch = useCallback((maxYear) => {
-    setMaxYear(maxYear);
-  }, []);
-
-  const handleMinPriceSearch = useCallback((minPrice) => {
-    setMinPrice(minPrice);
-  }, []);
-
-  const handleMaxPriceSearch = useCallback((maxPrice) => {
-    setMaxPrice(maxPrice);
-  }, []);
-
-  const setModelsList = useCallback((models) => {
-    setListModels(models);
-  }, []);
-
-  const setSellLots = useCallback((sellLots) => {
-    setLots(sellLots);
-  }, []);
-
-  const setLotsCount = useCallback((lotsCount) => {
-    setCount(lotsCount);
-  }, []);
-
-  const setCurPage = useCallback((curPage) => {
-    setCurrentPage(curPage);
+  const resetFilters = useCallback(() => {
+    setDraftFilters({
+      brand: "",
+      model: "",
+      minYear: "",
+      maxYear: "",
+      minPrice: 0,
+      maxPrice: 0,
+    });
+    setFilters(null);
+    setCurPage(1);
   }, []);
 
   return (
     <SearchContext.Provider
       value={{
-        setFilterSearch,
-        isFilterActive,
-        handleBrandSearch,
-        brand,
-        handleModelSearch,
-        model,
-        setModelsList,
+        draftFilters,
+        setDraftFilters,
+        filters,
+        isFilterActive: filters !== null,
+        applyFilters,
+        resetFilters,
         modelsList,
-        handleMinYearSearch,
-        minYear,
-        handleMaxYearSearch,
-        maxYear,
-        handleMinPriceSearch,
-        minPrice,
-        handleMaxPriceSearch,
-        maxPrice,
-        setSellLots,
+        setModelsList,
         sellLots,
-        setLotsCount,
+        setSellLots,
         lotsCount,
-        setCurPage,
+        setLotsCount,
         curPage,
+        setCurPage,
       }}
     >
       {children}

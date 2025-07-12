@@ -1,6 +1,8 @@
 import { useState } from "react";
+// import { useSearch } from "../../../providers/SearchContext";
 
 function YearSelect({ name, typeSelect, handleChange }) {
+  // const { draftFilters, setDraftFilters } = useSearch();
   const [selectedYear, setSelectedYear] = useState("");
 
   const years = [];
@@ -11,7 +13,7 @@ function YearSelect({ name, typeSelect, handleChange }) {
   const handleChangeYear = (event) => {
     const year = event.target.value;
     setSelectedYear(year);
-    handleChange(year);
+    handleChange(event);
   };
 
   return (

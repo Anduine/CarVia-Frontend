@@ -1,5 +1,5 @@
 .user-profile {
-  max-width: 900px;
+  max-width: 1200px;
 
   margin: 0 auto;
   padding: 20px;
@@ -19,195 +19,303 @@
     align-items: center;
     justify-content: center;
 
-    background-color: #eee;
-    color: #999;
-    border: 2px dashed #ccc;
-  }
-}
-
-.profile-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--not-important-color);
-}
-
-.user-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 8px;
-  align-items: left;
-
-  h1 {
-    grid-column: 1 / -1;
-    margin-bottom: 12px;
-    font-size: 2rem;
-    font-weight: 600;
+    background-color: var(--secondary-text-color);
+    color: var(--card-color);
+    border: 2px dashed var(--not-important-color);
   }
 
-  p {
-    margin: 0;
-    font-size: 1.2rem;
-  }
-}
-
-.lots-section {
-  margin: 32px 0;
-
-  h2 {
-    margin-bottom: 1rem;
-  }
-
-  .empty-lots {
+  .profile-header {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 24px;
 
-    min-height: 170px;
-
-    align-items: center;
-    justify-content: center;
-
-    color: var(--secondary-text-color);
-    font-size: 1rem;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--not-important-color);
   }
 
-  .lots-scroll-container {
-    position: relative;
-    display: flex;
-    align-items: center;
+  .user-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 8px;
+    align-items: left;
+
+    h1 {
+      grid-column: 1 / -1;
+      margin-bottom: 12px;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.2rem;
+    }
   }
 
-  .lots-list-scrollable {
-    display: flex;
-    gap: 1rem;
+  .add-lot-button {
+    display: block;
+    min-width: 14rem;
 
-    padding: 1rem 0;
-
-    overflow-x: auto;
-    scroll-behavior: smooth;
-  }
-
-  .lots-scroll-button {
-    padding: 6px 12px;
+    margin: 2rem auto;
+    padding: 0.8rem;
 
     border: none;
-    border-radius: 50%;
+    border-radius: 1rem;
 
-    background: var(--card-color);
-    color: var(--accent-color);
-    font-size: 2rem;
-
-    z-index: 1;
-    cursor: pointer;
-
-    transition: var(--card-color) 0.2s;
-  }
-
-  .lots-scroll-button:hover {
-    background-color: var(--active-color);
+    background-color: var(--accent-color);
     color: var(--text-color);
+    font-size: 1.2rem;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--active-color);
+    }
   }
 
-  .lots-scroll-left {
-    margin-right: 0.5rem;
+  .lots-section {
+    margin: 32px 0;
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    .empty-lots {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      min-height: 170px;
+
+      align-items: center;
+      justify-content: center;
+
+      color: var(--secondary-text-color);
+      font-size: 1rem;
+    }
+
+    .lots-scroll-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .lots-list-scrollable {
+      display: flex;
+      gap: 1rem;
+
+      padding: 1rem 0;
+
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+
+    .lots-scroll-button {
+      padding: 6px 12px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: var(--card-color);
+      color: var(--accent-color);
+      font-size: 2rem;
+
+      z-index: 1;
+      cursor: pointer;
+
+      transition: var(--card-color) 0.2s;
+    }
+
+    .lots-scroll-button:hover {
+      background-color: var(--active-color);
+      color: var(--text-color);
+    }
+
+    .lots-scroll-left {
+      margin-right: 0.5rem;
+    }
+
+    .lots-scroll-right {
+      margin-left: 0.5rem;
+    }
   }
 
-  .lots-scroll-right {
-    margin-left: 0.5rem;
-  }
-}
-
-.lots-list-scrollable::-webkit-scrollbar {
-  height: 8px;
-}
-
-.lots-list-scrollable::-webkit-scrollbar-track {
-  background: var(--background-color);
-}
-
-.lots-list-scrollable::-webkit-scrollbar-thumb {
-  background-color: var(--not-important-color);
-  border-radius: 4px;
-}
-
-/* Firefox */
-.lots-list-scrollable {
-  scrollbar-color: var(--not-important-color) var(--background-color);
-  scrollbar-width: thin;
-}
-
-.mini-lot-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  min-width: 160px;
-
-  background-color: var(--card-color);
-  border-radius: 12px;
-
-  overflow: hidden;
-
-  color: var(--text-color);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-  .lot-title {
-    min-height: 44px;
-
-    padding: 8px 4px 4px;
-
-    color: var(--accent-color);
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
+  .lots-list-scrollable::-webkit-scrollbar {
+    height: 8px;
   }
 
-  .lot-image-wrapper {
+  .lots-list-scrollable::-webkit-scrollbar-track {
+    background: var(--background-color);
+  }
+
+  .lots-list-scrollable::-webkit-scrollbar-thumb {
+    background-color: var(--not-important-color);
+    border-radius: 4px;
+  }
+
+  /* Firefox */
+  .lots-list-scrollable {
+    scrollbar-color: var(--not-important-color) var(--background-color);
+    scrollbar-width: thin;
+  }
+
+  .mini-lot-card {
+    position: relative;
+
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 
-    width: 100%;
-    height: 100px;
+    min-width: 160px;
+
+    background-color: var(--card-color);
+    border-radius: 12px;
 
     overflow: hidden;
+
+    color: var(--text-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover .edit-button {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .edit-button {
+      position: absolute;
+      top: 24px;
+      right: 6px;
+
+      background: var(--card-color);
+      color: var(--accent-color);
+      border-radius: 50%;
+      padding: 6px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+
+      opacity: 0;
+      pointer-events: none;
+
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        background-color: var(--active-color);
+        color: var(--text-color);
+      }
+    }
+
+    .lot-title {
+      min-height: 44px;
+
+      padding: 8px 4px 4px;
+
+      color: var(--accent-color);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+
+      cursor: pointer;
+    }
+
+    .lot-image-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 100%;
+      height: 100px;
+
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .placeholder-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 100%;
+
+      color: var(--not-important-color);
+    }
+
+    .lot-price {
+      margin: 8px 0 12px;
+
+      color: var(--accent-color);
+      font-size: 1rem;
+      font-weight: 500;
+    }
   }
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  .logout-button {
+    display: block;
+    margin-left: auto;
+    margin-top: 2rem;
 
-  .placeholder-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0.5rem 1rem;
 
-    height: 100%;
+    max-width: 15rem;
+    max-height: 5rem;
 
-    color: var(--not-important-color);
-  }
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
 
-  .lot-price {
-    margin: 8px 0 12px;
-
-    color: var(--accent-color);
-    font-size: 1rem;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    font-size: 1.3rem;
     font-weight: 500;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    svg {
+      margin-right: 0.5rem;
+    }
+
+    &:hover {
+      background-color: var(--active-color);
+      color: var(--text-color);
+    }
   }
-}
 
-.redirect-timer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
+  .edit-profile-button {
+    display: block;
+    max-width: 15rem;
+    max-height: 5rem;
 
-  /* .circle {
-    transform: rotate(-90deg);
-  } */
+    margin-left: auto;
+    margin-top: 2rem;
+
+    padding: 0.5rem;
+
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    font-size: 1.3rem;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--active-color);
+      color: var(--text-color);
+    }
+  }
 }

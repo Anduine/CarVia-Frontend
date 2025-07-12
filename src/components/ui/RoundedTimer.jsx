@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function RoundedTimer({ seconds = 3 }) {
+function RoundedTimer({ seconds = 3, navTarget = "/login" }) {
   const [timeLeft, setTimeLeft] = useState(seconds);
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ function RoundedTimer({ seconds = 3 }) {
       setTimeLeft((prev) => {
         if (prev <= 0) {
           clearInterval(interval);
-          navigate("/login");
+          navigate(navTarget);
           return 0;
         }
         return prev - 1;

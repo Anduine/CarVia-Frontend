@@ -1,5 +1,6 @@
 :root {
   --font: "Sofia Sans", sans-serif;
+  --error-text-color: #d60000;
 }
 
 :root[data-theme="dark"] {
@@ -15,7 +16,7 @@
 
 :root[data-theme="light"] {
   --background-color: #f5f5f5;
-  --card-color: #ffffff;
+  --card-color: #dbdbdb;
   --text-color: #1e1e1e;
   --secondary-text-color: #666666;
   --not-important-color: #cccccc;

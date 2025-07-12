@@ -6,17 +6,19 @@
   max-width: 400px;
   margin: 40px auto;
 
-  padding: 24px;
+  padding: 2rem;
 
-  border: 1px solid var(--not-important-color);
   border-radius: 12px;
 
   background-color: var(--card-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-  h2 {
-    margin-bottom: 16px;
+  h1 {
+    margin-bottom: 1rem;
 
+    color: var(--accent-color);
     text-align: center;
+    font-size: 2rem;
   }
 
   input {
@@ -31,7 +33,7 @@
     color: var(--text-color);
   }
 
-  button {
+  .submit-button {
     padding: 0.8rem;
 
     border: none;
@@ -68,24 +70,4 @@
       color: var(--active-color);
     }
   }
-}
-
-.auth-error {
-  margin-top: 0.5rem;
-
-  color: red;
-  font-size: 1.1rem;
-  text-align: center;
-}
-
-.auth-error-wrapper {
-  overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.3s ease;
-  max-height: 0;
-  opacity: 0;
-}
-
-.auth-error-wrapper.show {
-  max-height: 100px;
-  opacity: 1;
 }

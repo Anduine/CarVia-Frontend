@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUser } from "../../services/User.service";
+import { getUserProfile } from "../../services/User.service";
 import { getUserPostedLots, getUserLikedLots } from "../../services/Lots.service";
 import Avatar from "../ui/profile/Avatar";
+import AddLotButton from "../ui/profile/ButtonAddLot";
 import ScrollableLotsList from "../ui/profile/ScrollableLotsList";
+import ButtonLogout from "../ui/profile/ButtonLogout";
+import ButtonEditProfile from "../ui/profile/ButtonEditProfile";
 import RoundedTimer from "../ui/RoundedTimer";
 
 function UserPage() {
@@ -16,9 +19,8 @@ function UserPage() {
 
   useEffect(() => {
     setLoading(true);
-    const token = localStorage.getItem("token");
 
-    getUser(token)
+    getUserProfile()
       .then((response) => {
         if (response.status === 200) {
           setUser(response.data);
@@ -28,13 +30,7 @@ function UserPage() {
       })
       .catch((error) => {
         console.error("Помилка отримання профілю користувача:", error);
-        const message =
-          error.response?.data?.message || //  сообщение от бэка
-          error.response?.data || // если `message` нет, data (если это строка)
-          error.message || // сообщение от axios
-          "Помилка авторизації";
-
-        setError(message);
+        setError(error);
       })
       .finally(() => {
         getUserPostedLots(user.user_id)
@@ -61,8 +57,8 @@ function UserPage() {
   if (error)
     return (
       <>
-        <div className="information-block">{error}</div>
-        <RoundedTimer />
+        <div className="information-block">{error.response?.data || error.message || "Помилка авторизації"}</div>
+        <RoundedTimer seconds={3} navTarget={"/login"} />
       </>
     );
 
@@ -82,16 +78,27 @@ function UserPage() {
             <p>Адреса: </p>
             <p>{user?.address}</p>
           </div>
+          <ButtonEditProfile />
         </div>
+
+        <AddLotButton />
 
         <div className="lots-section">
           <h2>Виставлені лоти</h2>
-          <ScrollableLotsList lots={postedLots} sectionId={0} emptyText={"У вас ще немає активних лотів"} />
+          <ScrollableLotsList
+            lots={postedLots}
+            sectionId={0}
+            emptyText={"У вас ще немає активних лотів"}
+            isPosted={true}
+          />
         </div>
 
         <div className="lots-section">
           <h2>Лайкнуті лоти</h2>
           <ScrollableLotsList lots={likedLots} sectionId={1} emptyText={"Ви ще не лайкнули жодного лота"} />
+        </div>
+        <div>
+          <ButtonLogout />
         </div>
       </div>
     </>

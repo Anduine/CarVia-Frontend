@@ -2,15 +2,15 @@ import { useRef } from "react";
 import { CiImageOff } from "react-icons/ci";
 import MiniLotCard from "./MiniLotCard";
 
-function ScrollableLotsList({ lots, sectionId, emptyText }) {
+function ScrollableLotsList({ lots, sectionId, emptyText, isPosted = false }) {
   const scrollRef = useRef(null);
 
   const scrollLeft = () => {
-    scrollRef.current?.scrollBy({ left: -220, behavior: "smooth" });
+    scrollRef.current?.scrollBy({ left: -400, behavior: "smooth" });
   };
 
   const scrollRight = () => {
-    scrollRef.current?.scrollBy({ left: 220, behavior: "smooth" });
+    scrollRef.current?.scrollBy({ left: 400, behavior: "smooth" });
   };
 
   return (
@@ -22,7 +22,7 @@ function ScrollableLotsList({ lots, sectionId, emptyText }) {
           </button>
           <div className="lots-list-scrollable" ref={scrollRef} id={`${sectionId}-scroll`}>
             {lots.map((lot) => (
-              <MiniLotCard key={lot.lot_id} lot={lot} />
+              <MiniLotCard key={lot.lot_id} lot={lot} isPosted={isPosted} />
             ))}
           </div>
           <button className="lots-scroll-button lots-scroll-right" onClick={scrollRight}>

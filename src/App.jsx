@@ -1,14 +1,15 @@
-import "./assets/styles/index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { SearchProvider } from "./providers/SearchContext";
+import "./assets/styles/index.css";
 import Header from "./components/layout/Header";
-import SearchMenu from "./components/ui/search-form/SearchMenu";
-import LotsList from "./components/ui/LotsList";
-import UserPage from "./components/pages/UserPage";
+import MainPage from "./components/pages/MainPage";
 import LotPage from "./components/pages/LotPage";
-import LoginForm from "./components/pages/LoginForm";
-import RegisterForm from "./components/pages/RegisterForm";
+import AddLotPage from "./components/pages/AddLotPage";
+import UserPage from "./components/pages/UserPage";
+import LoginPage from "./components/pages/LoginPage";
+import RegisterPage from "./components/pages/RegisterPage";
 import ErrorBoundary from "./components/ui/ErrorBoundary";
+import EditLotPage from "./components/pages/EditLotPage";
+import EditUserPage from "./components/pages/EditUserPage";
 
 function App() {
   return (
@@ -18,24 +19,15 @@ function App() {
           <Header />
 
           <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <SearchProvider>
-                    <SearchMenu />
+            <Route path="/" element={<MainPage />} />
+            <Route path="/lot/:lotId" element={<LotPage />} />
+            <Route path="/add_lot" element={<AddLotPage />} />
+            <Route path="/edit_lot/:lotId" element={<EditLotPage />} />
 
-                    <main>
-                      <LotsList />
-                    </main>
-                  </SearchProvider>
-                </>
-              }
-            />
             <Route path="/profile" element={<UserPage />} />
-            <Route path="/lots/:id" element={<LotPage />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/edit_profile" element={<EditUserPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
             {/* <Route path="*" element={<NotFound />} /> */}
           </Routes>
         </Router>

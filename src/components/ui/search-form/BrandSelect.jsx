@@ -3,9 +3,9 @@ import { useSearch } from "../../../providers/SearchContext";
 import { getBrands, getModels } from "../../../services/Lots.service";
 
 function BrandSelect({ name }) {
-  const { handleBrandSearch, brand, handleModelSearch, setModelsList } = useSearch();
+  const { draftFilters, setDraftFilters, setModelsList } = useSearch();
 
-  const [selectedBrandID, setSelectedBrand] = useState("");
+  // const [selectedBrandID, setSelectedBrand] = useState("");
   const [carBrands, setCarBrands] = useState([]);
 
   useEffect(() => {
@@ -15,28 +15,25 @@ function BrandSelect({ name }) {
   }, []);
 
   useEffect(() => {
-    if (brand !== "") {
-      getModels(brand)
+    if (draftFilters.brand !== "") {
+      getModels(draftFilters.brand)
         .then((response) => setModelsList(response.data))
         .catch((error) => console.error("Помилка отримання моделей:", error.message));
     }
-  }, [brand, setModelsList]);
+  }, [draftFilters.brand, setModelsList]);
 
   const handleChange = (event) => {
-    const brandID = parseInt(event.target.value, 10);
-    const selectedBrandName = carBrands.find((b) => b.brand_id === brandID)?.brand_name;
+    const selectedBrandName = event.target.value;
 
-    setSelectedBrand(brandID);
-    handleBrandSearch(selectedBrandName);
-    handleModelSearch("");
+    setDraftFilters((prev) => ({ ...prev, brand: selectedBrandName, model: "" }));
   };
 
   return (
-    <select name={name} value={selectedBrandID} onChange={handleChange}>
-      <option value="">Марка</option>
+    <select name={name} value={draftFilters.brand} onChange={handleChange}>
+      <option value="">Бренд</option>
       {carBrands &&
         carBrands.map((brand) => (
-          <option key={brand.brand_id} value={brand.brand_id}>
+          <option key={brand.brand_id} value={brand.brand_name}>
             {brand.brand_name}
           </option>
         ))}
