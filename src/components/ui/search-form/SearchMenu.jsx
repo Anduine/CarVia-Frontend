@@ -10,13 +10,13 @@ function SearchMenu() {
 
   return (
     <form className="search-form">
-      <div className="search-form__grid">
-        <div className="grid__item">
+      <div className="search-form-grid">
+        <div className="search-form-item">
           <label>Марка</label>
           <BrandSelect name="brand" />
         </div>
 
-        <div className="grid__item">
+        <div className="search-form-item">
           <label>Ціна $</label>
           <div className="combo">
             <PriceSelect
@@ -32,12 +32,12 @@ function SearchMenu() {
           </div>
         </div>
 
-        <div className="grid__item">
+        <div className="search-form-item">
           <label>Модель</label>
           <ModelSelect name="model" />
         </div>
 
-        <div className="grid__item">
+        <div className="search-form-item">
           <label>Рік випуску</label>
           <div className="combo">
             <YearSelect
@@ -53,7 +53,7 @@ function SearchMenu() {
           </div>
         </div>
 
-        <div className="grid__item">
+        <div className="search-form-item">
           <SearchButton name="Пошук" />
         </div>
       </div>

@@ -25,7 +25,7 @@ function UserPage() {
         if (response.status === 200) {
           setUser(response.data);
         } else {
-          setError(response?.data?.message || "Помилка авторизації");
+          setError(response.data?.message || "Помилка авторизації");
         }
       })
       .catch((error) => {

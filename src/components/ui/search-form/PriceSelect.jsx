@@ -1,5 +1,3 @@
-// import { useSearch } from "../../../providers/SearchContext";
-
 function PriceSelect({ name, typeSelect, handleChange }) {
   return (
     <input className="combo-input" type="number" name={name} placeholder={typeSelect} onChange={handleChange}></input>

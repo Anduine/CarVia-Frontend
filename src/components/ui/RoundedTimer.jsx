@@ -25,7 +25,7 @@ function RoundedTimer({ seconds = 3, navTarget = "/login" }) {
     return () => {
       clearInterval(interval);
     };
-  }, [navigate, seconds]);
+  }, [navigate, seconds, navTarget]);
 
   const progress = 1 - timeLeft / seconds; // от 0 до 1
   const offset = circumference * progress; // от circumference до 0

@@ -1,8 +1,6 @@
 import { useState } from "react";
-// import { useSearch } from "../../../providers/SearchContext";
 
 function YearSelect({ name, typeSelect, handleChange }) {
-  // const { draftFilters, setDraftFilters } = useSearch();
   const [selectedYear, setSelectedYear] = useState("");
 
   const years = [];
@@ -17,7 +15,7 @@ function YearSelect({ name, typeSelect, handleChange }) {
   };
 
   return (
-    <select className="combo__input" name={name} onChange={handleChangeYear}>
+    <select className="combo-input" name={name} onChange={handleChangeYear}>
       <option value={selectedYear}> {typeSelect}</option>
       {years.map((year) => (
         <option key={year} value={year}>

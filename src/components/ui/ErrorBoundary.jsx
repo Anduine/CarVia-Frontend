@@ -13,7 +13,7 @@ function ErrorBoundary({ children }) {
   if (hasError) {
     return (
       <div>
-        <h2>Что-то пошло не так.</h2>
+        <h2>Щось пішло не так</h2>
         <p>{error?.message || "Невідома помилка"}</p>
       </div>
     );

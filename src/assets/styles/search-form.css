@@ -1,172 +1,116 @@
 .search-form {
   --elem-width: 20rem;
   max-width: 50%;
+  margin: 1rem auto;
+  padding: 1rem;
 
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.search-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.search-form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.search-form-item:last-child {
+  grid-column: 2;
+  width: 60%;
   margin-left: auto;
-  margin-right: auto;
-  margin-top: 1rem;
+}
 
-  label {
-    padding: 10px;
-
-    color: var(--text-color);
-    font-weight: 400;
-    font-size: 20px;
-  }
-
-  .search-form__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-
-  .grid__item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .grid__item:last-child {
-    grid-column: 2;
-
-    width: 60%;
-
-    margin-left: auto;
-  }
-
-  .dropdown {
-    position: relative;
-    margin-bottom: 1rem;
-
-    .dropdown-label {
-      display: block;
-      padding: 10px;
-      font-size: 20px;
-      color: var(--text-color);
-      cursor: pointer;
-    }
-
-    .dropdown__panel {
-      position: absolute;
-
-      display: flex;
-      gap: 10px;
-
-      padding: 10px;
-
-      background-color: var(--card-color);
-      border-radius: 0.5rem;
-      z-index: 1;
-
-      input {
-        width: 7rem;
-        padding: 10px;
-
-        background-color: var(--bg-color);
-        color: var(--text-color);
-
-        border: none;
-        border-radius: 0.4rem;
-      }
-    }
-  }
-
+.search-form {
   input,
   select,
   button {
-    display: block;
-    box-sizing: border-box;
-
     width: 100%;
-    height: auto;
-
-    margin-top: 0.5rem;
-    margin-bottom: 10px;
-
     padding: 15px 10px;
-
     border: 0;
     border-radius: 5px;
-
     background-color: var(--card-color);
     color: var(--text-color);
-    font-family: var(--font);
-    font-weight: 400;
     font-size: 20px;
   }
 
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  label {
+    padding: 10px;
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 20px;
   }
 
   .combo {
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+
+    width: 100%;
   }
 
-  .combo__input {
-    width: 49%;
+  .combo-input {
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
   }
 
   option {
     color: var(--text-color);
   }
 
-  .price-status {
-    float: right;
-  }
-
-  input[type="range"] {
-    width: 100%;
-    height: 6px;
-
-    appearance: none;
-
-    background: var(--card-color);
-    border-radius: 5px;
-    outline: none;
-    transition: 0.3s;
-
-    /* Стилизация трека для WebKit (Chrome, Safari, Edge) */
-    &::-webkit-slider-runnable-track {
-      height: 6px;
-      background: #ff7f00;
-      border-radius: 5px;
-    }
-
-    /* Стилизация ползунка для WebKit */
-    &::-webkit-slider-thumb {
-      width: 20px;
-      height: 20px;
-
-      margin-top: -7px;
-
-      -webkit-appearance: none;
-      appearance: none;
-
-      background: var(--accent-color);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    &::-webkit-slider-thumb:hover {
-      background: var(--active-color);
-    }
-  }
-
   button {
     transition: 300ms ease;
+  }
 
-    &:active {
-      background-color: var(--accent-color);
+  button:active {
+    background-color: var(--accent-color);
+  }
+
+  button:hover {
+    transform: scale(1.02);
+  }
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    max-width: 100%;
+    padding: 0.5rem;
+
+    .combo {
+      flex-direction: column;
+    }
+  }
+
+  .search-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-form-item {
+    margin-bottom: 0;
+  }
+
+  .search-form-item:last-child {
+    grid-column: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .search-form {
+    input,
+    select,
+    button {
+      font-size: 16px;
+      padding: 12px 8px;
     }
 
-    &:hover {
-      transform: scale(1.02);
+    label {
+      font-size: 16px;
     }
   }
 }

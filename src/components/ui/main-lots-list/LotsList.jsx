@@ -76,7 +76,7 @@ function LotsList() {
   }, [lotsCount]);
 
   if (loading) return <div className="information-block">Завантаження...</div>;
-  if (error) return <div className="information-block">Помилка: {error?.response?.data || error.message}</div>;
+  if (error) return <div className="information-block">Помилка: {error.message || error.response?.data.pre}</div>;
   if (!sellLots || sellLots.length === 0) return <div className="information-block">Лоти не знайдені</div>;
 
   return (
