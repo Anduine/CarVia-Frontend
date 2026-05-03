@@ -1,7 +1,10 @@
 import axios from "axios";
+import { loadConfig } from "../utils/config";
+
+const baseURL = await loadConfig();
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: baseURL.API_URL,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

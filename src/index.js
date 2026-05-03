@@ -1,19 +1,26 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-// import reportWebVitals from "./reportWebVitals";
+import "./assets/styles/index.css";
+import { loadConfig, setConfig } from "./utils/config";
 
 const preferredTheme = localStorage.getItem("theme") || "dark";
+if (preferredTheme === "") {
+  localStorage.setItem("theme", "dark");
+}
 document.documentElement.setAttribute("data-theme", preferredTheme);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  // <React.StrictMode>
-  <App />
-  // </React.StrictMode>
-);
+async function startApp() {
+  try {
+    const config = await loadConfig();
+    setConfig(config);
+  } catch (err) {
+    console.error("Помилка завантаження конфігурації:", err);
+    document.body.innerHTML = `<h1>Помилка завантаження конфігурації</h1>`;
+    return;
+  }
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-//reportWebVitals();
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+}
+
+startApp();
