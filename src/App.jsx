@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./assets/styles/index.css";
 import Header from "./components/layout/Header";
 import MainPage from "./components/pages/MainPage";
 import LotPage from "./components/pages/LotPage";
